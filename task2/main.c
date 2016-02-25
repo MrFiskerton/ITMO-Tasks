@@ -28,12 +28,14 @@ int main(int argc, char *argv[]){
     record temporary;
     fpos_t position;
 
-    scanf("%s", command);
+    //scanf("%s", command);
     FILE* phoneBookFile;
 
-    phoneBookFile = fopen(command,"r+");
+    //phoneBookFile = fopen(command,"r+");
+    phoneBookFile = fopen(argv[1],"r+");
     if(phoneBookFile == NULL){
-        phoneBookFile = fopen(command,"w+");
+        //phoneBookFile = fopen(command,"w+");
+        phoneBookFile = fopen(argv[1],"w+");
         printf("%s\n", "File not found, so was created");
     }
     scanf("%s", command);
@@ -82,7 +84,6 @@ int main(int argc, char *argv[]){
             }
 */
             stabilizationPhoneNumber(current.id);
-            //scanf("%s", current.name);
             while ( !feof(phoneBookFile) ){
                 fgetpos(phoneBookFile, &position);
                 fscanf( phoneBookFile, "%s %s %s\n", temporary.id, temporary.name, temporary.phoneNumber );
