@@ -4,7 +4,7 @@
 
 #define min(a,b) ((a)<(b)) ? (a) : (b)
 #define max(a,b) ((a)>(b)) ? (a) : (b)
-const int MAX_SIZE = 10001;
+//const int MAX_SIZE = 10001;
 
 //typedef long long ll;
 typedef struct Record
