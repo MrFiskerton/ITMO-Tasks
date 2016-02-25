@@ -6,7 +6,7 @@
 #define max(a,b) ((a)>(b)) ? (a) : (b)
 const int MAX_SIZE = 10001;
 
-typedef long long ll;
+//typedef long long ll;
 typedef struct Record
 {
     char name[10001];
@@ -20,7 +20,8 @@ void stabilizationName(char*);
 
 int main(int argc, char *argv[]){
     char command[10001];
-    ll maxId = -1;
+    //ll maxId = -1;
+    int maxId = -1;
     int mod, flag;
     int i;
     record current;
@@ -81,7 +82,7 @@ int main(int argc, char *argv[]){
             }
 */
             stabilizationPhoneNumber(current.id);
-            scanf("%s", current.name);
+            //scanf("%s", current.name);
             while ( !feof(phoneBookFile) ){
                 fgetpos(phoneBookFile, &position);
                 fscanf( phoneBookFile, "%s %s %s\n", temporary.id, temporary.name, temporary.phoneNumber );
@@ -90,15 +91,17 @@ int main(int argc, char *argv[]){
                 }
             }
             fsetpos (phoneBookFile, &position);
-            fprintf( phoneBookFile, "%s ",temporary.id);
             if(strcmp(command, "name") == 0){ //|name|
+                scanf("%s", current.name);
                 stabilizationName(current.name);
-                fprintf( phoneBookFile, "%s %s", current.name, temporary.phoneNumber);
+                fprintf( phoneBookFile, "%s %s %s\n", temporary.id, current.name, temporary.phoneNumber);
             } else if(strcmp(command, "number") == 0){//|number|
-                stabilizationPhoneNumber(current.name);
-                fprintf( phoneBookFile, "%s %s", temporary.name, current.name);
-            } 
-            fprintf( phoneBookFile, "%s","\n");
+                scanf("%s", current.phoneNumber);
+                stabilizationPhoneNumber(current.phoneNumber);
+                fprintf( phoneBookFile, "%s %s %s\n",  temporary.id, temporary.name, current.phoneNumber);
+            } else {
+                printf("%s\n", "The behavior is undefined");
+            }
         } else if(strcmp(command, "find") == 0){ //find
             rewind(phoneBookFile);
             scanf("%s", current.name);
@@ -143,7 +146,7 @@ int main(int argc, char *argv[]){
                         }
                     }
                     if(flag == 1){
-                        printf("%s %s %s\n", &temporary.id, temporary.name, temporary.phoneNumber);
+                        printf("%s %s %s\n", temporary.id, temporary.name, temporary.phoneNumber);
                     }
                 }
             }
