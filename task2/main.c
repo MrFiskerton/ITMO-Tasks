@@ -156,7 +156,7 @@ int main(int argc, char *argv[]){
             printf("%s\n","Operation is not defined");
         }
 //bottom:
-        fflush(phoneBookFile);
+        fflush(stdout);
         scanf("%s", command);
     }
     fclose(phoneBookFile);
