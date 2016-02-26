@@ -36,7 +36,7 @@ int main(int argc, char *argv[]){
     if(phoneBookFile == NULL){
         //phoneBookFile = fopen(command,"w+");
         phoneBookFile = fopen(argv[1],"w+");
-        printf("%s\n", "File not found, so was created");
+        //printf("%s\n", "File not found, so was created");
     }
     scanf("%s", command);
     while(strcmp(command, "exit") != 0){         //exit
