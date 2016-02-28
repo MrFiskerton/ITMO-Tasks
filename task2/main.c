@@ -42,10 +42,6 @@ int main(int argc, char *argv[]){
     int i;
     record* mod;
     char *command;
-/*
-char gg[] = "test1.txt";
-fileName = gg;
-//*/
 
     fileName = argv[1];
     phoneBookFile = fopen(fileName,"r+");
@@ -63,42 +59,17 @@ fileName = gg;
         fscanf(phoneBookFile, "%d", &current.id);
         current.name = read(phoneBookFile);
         current.phoneNumber = read(phoneBookFile);
-//printf("    Lines: %d %s %s\n",current.id,current.name,current.phoneNumber );
         createRecord(current.id, current.name, current.phoneNumber);
     }
 
     maxId = max(current.id, maxId);
     maxId++;
-/*
-temp = head;
-for (i = 0; i < phoneBook.size; i++){
-    printf("%d ", temp->id);
-    printf("%s %s\n", temp->name, temp->phoneNumber);
-    temp = temp->next;
-}
-//printf("   max Id: %d\n", maxId);
-/*
-deleteRecord(getIdPrePosition(4));
-fileUpdate();
-deleteRecord(getIdPrePosition(1));
-fileUpdate();
-exit(0);
-//scanf("%s", command);
-//printf("   Add: %s\n", command);
-//*/
+
     while( true ){
         command = read(stdin);
-        //scanf("%s", command);
-/*
-printf("   [Command] := \"%s\"\n", command);
-//*/
         if(strcmp(command, "create") == 0){
-//printf("%s\n", "Hi" );
             current.name = read(stdin);
             current.phoneNumber = read(stdin);
-/*
-printf("   Create: %s %s %s\n", command, current.name, current.phoneNumber);
-//*/
             if(isCorrectName(current.name) && stabilizationPhoneNumber(current.phoneNumber)){
                 createRecord(maxId, current.name, current.phoneNumber);
                 maxId++;
@@ -106,9 +77,6 @@ printf("   Create: %s %s %s\n", command, current.name, current.phoneNumber);
             }
         } else if(strcmp(command, "delete") == 0){
             scanf("%d", &current.id);
-/*
-printf("   Delete: %d\n", current.id);
-//*/
             mod = getIdPrePosition(current.id);
             if(mod != NULL ){
                 deleteRecord(mod);
@@ -120,15 +88,8 @@ printf("   Delete: %d\n", current.id);
         } else if(strcmp(command, "change") == 0){
             scanf("%d ", &current.id);
             mod = getIdPrePosition(current.id);
-/*
-printf("%d %s %s\n", mod->id, mod->name, mod->phoneNumber);
-//*/
             if(mod != NULL){
                 temp = mod->next;
-/*
-printf("%d %s %s\n", temp->id, temp->name, temp->phoneNumber);
-fflush(stdout);
-//*/
                 command = read(stdin);
                 if(strcmp(command,"name") == 0){
                     current.name = read(stdin);
@@ -158,13 +119,8 @@ fflush(stdout);
                 if(!f1){
                     stabilizationPhoneNumber(command);
                 } else {
-//printf("   %s\n", command);
                     command = alphaToLower(command);
-//printf("   %s\n", command);
                 }
-/*
-printf("   Find: %s\n", command);
-//*/
                 temp = head;
                 for (i = 0; i < phoneBook.size; i++){
                     f2 = false;
@@ -212,11 +168,9 @@ void createRecord(int id, char* name, char* number){
     buf->name = name;
     buf->phoneNumber = number;
     buf->next = NULL;
-
     if (buf->name[0] == '\0') {
         return;
     }
-
     if(head == NULL){
         head = buf;
         tail = head;
@@ -229,9 +183,6 @@ void createRecord(int id, char* name, char* number){
 }
 
 void deleteRecord(record* cur){
-/*
-printf("   Pre: %d %s %s\n", cur->id, cur->name, cur->phoneNumber);
-//*/
     if(cur == head){
         head = cur->next;
         free(cur);
@@ -253,7 +204,6 @@ char* read(FILE* inStream)
     char c;
     while (true){
         c = fgetc(inStream);
-//printf("  %s [%c]\n", "in",c);
         if(c == '\n' || c == ' ' && i > 0 || c == EOF ){
             break;
         }
@@ -267,7 +217,6 @@ char* read(FILE* inStream)
     if(inStream != stdin){
         ungetc(c, inStream);
     }
-//printf(" str: [%s]\n", str);
     return str;
 }
 
@@ -322,15 +271,10 @@ void fileUpdate()
 {
     fclose(phoneBookFile);
     phoneBookFile = fopen(fileName, "w+");
-    //freopen(fileName, "w", phoneBookFile);
     int i;
     temp = head;
     while(temp != NULL){
         fprintf(phoneBookFile, "%d %s %s\n", temp->id, temp->name, temp->phoneNumber);
-/*
-printf("   FILE:  %d ", temp->id);
-printf("%s %s\n", temp->name, temp->phoneNumber);
-//*/
         temp = temp->next;
     }
     return;
