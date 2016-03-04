@@ -4,9 +4,6 @@
 #include <stdbool.h>
 #include <ctype.h>
 
-#define min(a,b) ((a)<(b)) ? (a) : (b)
-#define max(a,b) ((a)>(b)) ? (a) : (b)
-
 typedef struct Record{
     char *name;
     char *phoneNumber;
@@ -62,7 +59,7 @@ int main(int argc, char *argv[]){
         createRecord(current.id, current.name, current.phoneNumber);
     }
 
-    maxId = max(current.id, maxId);
+    maxId = (current.id > maxId) ? current.id : maxId;
     maxId++;
 
     while( true ){
