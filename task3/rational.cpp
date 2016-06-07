@@ -1,4 +1,3 @@
-//Mr.Fiskerton//
 #include "rational.h"
 
 rational::rational(int newNum) {
