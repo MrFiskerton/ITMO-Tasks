@@ -27,13 +27,14 @@ int rational::getDenom() const {
 	return denominator;
 }
 
-int gcd (int a, int b) {
+int rational::gcd (int a, int b) {
 	return b ? gcd (b, a % b) : a;
 }
 
-int lcm(int a, int b) {
+int rational::lcm(int a, int b) {
     return a / gcd(a, b) * b;
 }
+
 
 void rational::simplify() {
     int t = gcd(numerator, denominator);
@@ -60,4 +61,3 @@ rational rational::operator*(rational const &operand) const {
 rational rational::operator/(rational const &operand) const {
     return rational(numerator * operand.denominator, denominator * operand.numerator);
 }
-
