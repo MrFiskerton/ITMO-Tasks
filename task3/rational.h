@@ -2,9 +2,9 @@
 
 class rational {
 	public:
+		rational();
 		rational(int);
 		rational(int, int);
-		rational(bool, int, int);
 		int getNum() const;
 		int getDenom() const;
 		rational operator +(rational const &operand) const;
@@ -13,11 +13,9 @@ class rational {
 		rational operator /(rational const &operand) const;
 
 	private:
-		unsigned int num;
-		unsigned int denom;
-		bool sign;//1->"+"  0-> "-" 
-		static int gcd (int, int);
-		static void simplify(int&, int&);
-		static void abs(int&);
-		static bool sign(int);
+		int numerator;
+		int denominator;
+		void simplify();
+		//int lcm(int, int);
+		//int gcd (int, int);
 };
