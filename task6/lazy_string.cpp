@@ -10,7 +10,7 @@ lazy_string::lazy_string() {
 lazy_string::lazy_string(const string &str) {
     (*this).begin = 0;
     (*this).end = str.size();
-    (*this).data = make_shared<string>(str);
+    this->data = make_shared<string>(str);
 }
 
 lazy_string::lazy_string(size_t begin, size_t size, shared_ptr<string> str) {
