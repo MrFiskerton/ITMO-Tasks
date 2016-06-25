@@ -29,7 +29,7 @@ public:
     size_t length() const;          //Return length of lazy sting
 
     //Return the substring from position begin to begin + length (or to the end of a lazy string)
-    lazy_string substr(size_t begin, size_t length = string::npos);
+    lazy_string substr(size_t begin, size_t length = std::string::npos);
 
     get_char at(size_t i);          //Return the character of lazy string
     char at(size_t i) const;
@@ -42,3 +42,4 @@ public:
     //Sends lazy string to output stream
     friend std::ostream &operator<<(std::ostream &output, lazy_string &str);
 };
+
