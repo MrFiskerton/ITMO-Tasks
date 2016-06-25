@@ -19,13 +19,9 @@ lazy_string::lazy_string(size_t begin, size_t size, shared_ptr<string> str) {
     (*this).data = str;
 }
 
-size_t lazy_string::size() const {
-    return end;
-}
+size_t lazy_string::size() const { return end; }
 
-size_t lazy_string::length() const {
-    return end;
-}
+size_t lazy_string::length() const { return end; }
 
 istream &operator>>(istream &input, lazy_string &str) {
     auto s = make_shared<string>();
@@ -41,8 +37,6 @@ ostream &operator<<(ostream &output, lazy_string &str) {
     return output;
 }
  
-
-
 lazy_string lazy_string::substr(size_t pos, size_t length) {
     return lazy_string(begin + pos, (pos + length > end) ? (end - pos) : length, data);
 }
@@ -81,5 +75,3 @@ lazy_string::get_char &lazy_string::get_char::operator=(char c) {
 lazy_string::get_char::operator char() const {
     return (*lazy_str->data)[lazy_str->begin + index];
 }
-
-
