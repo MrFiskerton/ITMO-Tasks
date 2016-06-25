@@ -16,6 +16,7 @@ class rational {
 		int numerator;
 		int denominator;
 		void simplify();
-		//int lcm(int, int);
-		//int gcd (int, int);
+		static int lcm(int, int);
+		static int gcd (int, int);
 };
+
