@@ -19,7 +19,7 @@ class lazy_string {
 private:
     size_t begin, end;
     std::shared_ptr<std::string> data;
-    lazy_string(size_t begin, size_t size, std::shared_ptr<string> str);
+    lazy_string(size_t begin, size_t size, std::shared_ptr<std::string> str);
 
 public:
     lazy_string();                  //Create empty lazy string
