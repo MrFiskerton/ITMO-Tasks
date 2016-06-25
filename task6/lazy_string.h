@@ -17,8 +17,8 @@ class lazy_string {
     };
 
 private:
-    size_t start, number;
-    std::shared_ptr<string> word;
+    size_t begin, end;
+    std::shared_ptr<string> data;
     lazy_string(size_t begin, size_t size, std::shared_ptr<string> str);
 
 public:
@@ -28,8 +28,8 @@ public:
     size_t size() const;            //Return length of lazy sting
     size_t length() const;          //Return length of lazy sting
 
-    //Return the substring from position start to start + length (or to the end of a lazy string)
-    lazy_string substr(size_t start, size_t length = string::npos);
+    //Return the substring from position begin to begin + length (or to the end of a lazy string)
+    lazy_string substr(size_t begin, size_t length = string::npos);
 
     get_char at(size_t i);          //Return the character of lazy string
     char at(size_t i) const;
@@ -42,4 +42,3 @@ public:
     //Sends lazy string to output stream
     friend std::ostream &operator<<(std::ostream &output, lazy_string &str);
 };
-
