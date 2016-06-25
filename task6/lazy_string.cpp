@@ -4,7 +4,7 @@ using namespace std;
 
 lazy_string::lazy_string() {
     (*this).begin = (*this).end = 0;
-    this->data = make_shared<string>("");
+    (*this).data = make_shared<string>("");
 }
 
 lazy_string::lazy_string(const string &str) {
